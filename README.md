@@ -21,7 +21,9 @@ The key blob should start with a BLOBHEADER structure with a bType of PRIVATEKEY
 of CUR_BLOB_VERSION (0x02), and an aiKeyAlg of CALG_RSA_KEYX (0x0000a400). Following this will be the
 key itself, which should start with the "RSA2" string. So if you dump the pbData parameter to
 CryptImportKey(), it should begin this way:
+```
 0702 0000 00a4 0000 5253 4132
+```
 
 Usage:
 ```
