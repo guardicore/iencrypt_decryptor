@@ -1,6 +1,5 @@
-===========================================
-= pasta decryptor for IEncrypt ransomware =
-===========================================
+pasta decryptor for IEncrypt ransomware
+======
 
 A recent series of IEncrypt ransomware attacks prompted us to our own implementation of their decryptor.
 Since the decryptor binary sent over by the ransomware distributors is obfuscated, it's a little unclear
@@ -25,17 +24,21 @@ CryptImportKey(), it should begin this way:
 0702 0000 00a4 0000 5253 4132
 
 Usage:
+```
 pasta -e <.extext> -k <keyfile> [-f] <encryptedfile>
     -e  encrypted file extension (starting with '.' character
     -k  path to private key to use for decryption
     -f  force overwrite of existing decrypted file
     -h  show this help
+```
 
 For example,
-pasta -e .xyzxyz -k my_key.bin encrypted_file.xyzxyz
+
+`pasta -e .xyzxyz -k my_key.bin encrypted_file.xyzxyz`
 
 If you like, you can easily run this on an entire directory with a quick batch script:
-for /c "C:\encrypted_dir" %x in (*.xyzxyz) do pasta.exe -k my_key.bin -e .xyzxyz "%x"
+
+```for /c "C:\encrypted_dir" %x in (*.xyzxyz) do pasta.exe -k my_key.bin -e .xyzxyz "%x"```
 
 This program has been tested on Windows 7 and 10, but it should port readily to other versions of Windows.
 
