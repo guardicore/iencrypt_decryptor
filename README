@@ -18,6 +18,12 @@ We hope to have a utility that does this ready soon. In the meantime, you can re
 their decryptor in a safe environment, and placing a breakpoint on CryptImportKey with WinDbg -- dump
 the key blob it receives to a file.
 
+The key blob should start with a BLOBHEADER structure with a bType of PRIVATEKEYBLOB (0x07), a bVersion
+of CUR_BLOB_VERSION (0x02), and an aiKeyAlg of CALG_RSA_KEYX (0x0000a400). Following this will be the
+key itself, which should start with the "RSA2" string. So if you dump the pbData parameter to
+CryptImportKey(), it should begin this way:
+0702 0000 00a4 0000 5253 4132
+
 Usage:
 pasta -e <.extext> -k <keyfile> [-f] <encryptedfile>
     -e  encrypted file extension (starting with '.' character
