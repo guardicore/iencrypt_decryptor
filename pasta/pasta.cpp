@@ -60,7 +60,7 @@ BOOL GetValueFromReadme(const char* readmeContents, const char* valueName, BYTE*
 	// TODO: probably a cleaner way to do this
 	if (!foundValueEnd)
 	{
-		foundValueEnd = foundValue + strlen(readmeContents);
+		foundValueEnd = strchr(foundValue, '\0');
 	}
 
 	foundValueLength = (size_t)(foundValueEnd - foundValue);
